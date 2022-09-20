@@ -1,0 +1,72 @@
+package guessthenumber;
+import java.io.*;
+public class Guessthenumber {
+    public static void main(String[] args) {
+        
+        int computerNum = (int) (Math.random() *101);
+         int PlayerTries = 0;
+      //  System.out.println(computerNum);
+        System.out.println("Pick a number 0-100");
+        boolean keepLooping = true;
+        while (keepLooping)
+        {
+            int playerNum = readInt();   
+            if (computerNum == playerNum)
+            {
+            keepLooping = false;
+                if (PlayerTries <= 3)
+                    {
+                    System.out.println("Nice! You are correct!");
+                    System.out.println("You got the number in " + PlayerTries + " tries");
+                    }
+                    else if (PlayerTries <= 8)
+                    {
+                    System.out.println("Okay! You are correct!");
+                    System.out.println("You got the number in " + PlayerTries + " tries");
+                    }
+            }
+            else if (computerNum < playerNum)
+                {
+                PlayerTries = PlayerTries + 1; 
+                System.out.println("Incorrect. Please guess a lower number.");
+                }
+                else if (computerNum > playerNum)
+                {
+                PlayerTries = PlayerTries + 1;
+                System.out.println("Incorrect. Please guess a higher number.");
+                }
+        }
+       
+        
+           
+    }    
+///////////////////////////////////////////////////
+    public static int readInt()
+    {
+        String str = read();
+        int num = Integer.parseInt(str.trim());
+        return (num);
+    }
+    public static String read()
+    {
+        byte [] buffer = new byte[10];
+        try
+        {
+            int numBytes = System.in.read(buffer);
+        }
+        catch(IOException e)
+        {
+            System.out.print("Error: " + e);
+            System.exit(1);
+        }
+        String str = new String(buffer);
+        int ball = 5;
+        return (str);
+    }
+
+    public static void write(String str)
+    {
+        System.out.print(str);
+    }
+
+}
